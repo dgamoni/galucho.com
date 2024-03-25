@@ -40,7 +40,7 @@
 								echo "<div class='category-term-description'>{$tds}</div>";
 							}
                     	echo '<div style="height:50px" class="hr hr-invisible  avia-builder-el-7  el_after_av_codeblock  el_before_av_textblock  "><span class="hr-inner "><span class="hr-inner-style"></span></span></div>';
-                    	echo do_shortcode('[wpdreams_ajaxsearchpro id=1]');
+                    	echo do_shortcode('[wpdreams_ajaxsearchpro id=3]');
 						?>
                     </div>
 

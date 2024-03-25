@@ -17,12 +17,17 @@ jQuery(document).ready(function($){
 	} else {
 		$optional = '';
 	}
+	if ($clap_product_techdetails_title.length >0) {
+		$clap_product_techdetails_title_html = $clap_product_techdetails_title[0]['innerHTML']
+	} else {
+		$clap_product_techdetails_title_html ='';
+	}
 
 
 	$('.clap_popap').magnificPopup({
 	  items: {
 	      src: '<div id="test-popup" class="white-popup">'+
-	      			'<p class="clap-product-title-small clap_product_techdetails_title_popup">'+$clap_product_techdetails_title[0]['innerHTML']+'</p>'+
+	      			'<p class="clap-product-title-small clap_product_techdetails_title_popup">'+$clap_product_techdetails_title_html+'</p>'+
 	      			'<img src="'+$dataimg+'">'+$optional+
 	      		'</div>',
 	      type: 'inline',

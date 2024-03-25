@@ -40,7 +40,9 @@ function galucho_textdomain(){
 }
 
 // load js
-wp_enqueue_script( 'goclap_child_js', CORE_URL .'/js/custom.js', array('jquery'), 2, false );
+if ( !is_admin() ) {
+    wp_enqueue_script( 'goclap_child_js', CORE_URL .'/js/custom.js', array( 'jquery'), null, TRUE );
+}
 
 
 // ACF load BUG!
@@ -88,4 +90,38 @@ wp_enqueue_script( 'goclap_child_js', CORE_URL .'/js/custom.js', array('jquery')
 //     }
 // }
 
+// disable update
+function my_filter_plugin_updates( $value ) {
+    unset( $value->response['unite-gallery-lite/unitegallery.php'] );
+    return $value;
+ }
+ add_filter( 'site_transient_update_plugins', 'my_filter_plugin_updates' );
 
+
+// acf+wpml
+// function get_field_wpml( $field_key, $post_id = false, $format_value = true ) {
+
+//     // see : http://support.advancedcustomfields.com/forums/topic/wpml-and-acf-options/
+
+//     global $sitepress;
+
+//     $is_cascade   = $post_id == 'option' && $format_value == true ? true : false;
+//     $format_value = $post_id == 'option' ? true : $format_value; // force $format_value = true for option
+
+//     // get field for default language
+//     if ( ( $sitepress->get_default_language() == ICL_LANGUAGE_CODE ) && ( $ret = get_field( $field_key, $post_id, $format_value ) ) ) {
+//        return $ret;
+//     }
+
+//     // get field for current language
+//     elseif ( $ret = get_field( $field_key . '_' . ICL_LANGUAGE_CODE, $post_id, $format_value ) ) {
+//         return $ret;
+//     }
+
+//     // get field when if not exists for locale by cascade
+//     elseif ( $is_cascade ) {
+//         return get_field( $field_key, $post_id, $format_value );
+//     }
+
+//     return false;
+// }

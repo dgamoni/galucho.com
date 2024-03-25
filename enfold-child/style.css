@@ -58,6 +58,7 @@ Template: enfold
 	font-weight: 400 !important;
 	color:#00509f !important;
 	}
+	
 .galucho_botao {
 	background: rgba(0, 80, 159, .0) !important;
 	border:2px solid #00509f!important; 
@@ -72,23 +73,26 @@ Template: enfold
 }
 #top .input-text, #top input[type="text"], #top input[type="input"], #top input[type="password"], #top input[type="email"], #top input[type="number"], #top input[type="url"], #top input[type="tel"], #top input[type="search"], #top textarea, #top select {
     -webkit-appearance: none;
-/*    border: 1px solid #e1e1e1;
+/*  border: 1px solid #e1e1e1;
     padding: 8px 6px; */
     outline: none;
     font: 1em "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-/*    color: #777; */
+/*  color: #777; */
     margin: 0;
-/*    width: 100%; */
+/*  width: 100%; */
     display: block;
 	margin-bottom: 0px;
-/*    background: #fff;
+/*  background: #fff;
     border-radius: 0px; */
 }
+
+/* CSS para a form de mailchimp */
+.galucho_select select { background-color: #2B6FAC!important; }
 
 
 /* Reduz fonte no widget do footer */
 #footer .textwidget	{
-	margin-top: -0.25em;
+	margin-top: 0px!important;
 	font-size:13px;
 	line-height: 150%;
 }
@@ -118,6 +122,11 @@ Template: enfold
 	color: #919191!important;
 	text-decoration: none;
 }
+
+/* Esconder bandeiras wpml na top bar */
+/* #header_meta .avia_wpml_language_switch { display: none; } */
+
+
 
 /*left sidebar*/
 .collapsing.categories {
@@ -165,10 +174,14 @@ Template: enfold
     line-height: 35px;
     margin-bottom: 0;
 }
-.entry-content-wrapper li.item, .subcat .item{
+.entry-content-wrapper li.item,
+.subcat .item,
+.maincat .item 
+{
 	padding: 0;
 	margin: 0;
 	line-height: 24px;
+	padding-bottom: 8px;
 }
 li.maincat:before,
 li.mycat:before {
@@ -232,7 +245,7 @@ li.mycat:before {
   background: #FFF;
   padding: 20px;
   width: auto;
-  max-width: 650px;
+  max-width: 850px;
   margin: 20px auto;
 }
 .clap_popap {
@@ -243,4 +256,17 @@ li.mycat:before {
 	outline: 0;
     text-decoration: underline;
     cursor: pointer;
+}
+.clap_hide {
+	display: none;
+}
+
+@media only screen and (max-width: 767px) {
+	 .responsive #top #main .sidebar.sidebar_left {
+	    display: block;
+	    width: 100%;
+	}
+	.responsive #top #main .sidebar.sidebar_left ul {
+		margin-left: 0;
+	}
 }

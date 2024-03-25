@@ -167,6 +167,7 @@ function getSubPosts($posts, $cat2, $showPosts, $theID) {
         }
         // dgamoni
         $clap_product_title_description = get_field('clap_product_title_description', $post2->ID);
+        //$clap_product_title_description = get_field_wpml('clap_product_title_description', $post2->ID);
        if ($clap_product_title_description) {
           $product_title_description = "<span class='clap_product_title_description'>".$clap_product_title_description."</span>";
        } else {
@@ -495,8 +496,13 @@ function get_collapscat_fromdb($args='') {
     $postsInCat=array();
     $postquery= "select ID, slug, date(post_date) as date, post_status,
          post_type, post_date, post_author, post_title, post_name, name, object_id,
-         t.term_id from $wpdb->term_relationships AS tr, $wpdb->posts AS p,
-         $wpdb->terms AS t, $wpdb->term_taxonomy AS tt
+         t.term_id 
+         FROM $wpdb->term_relationships 
+         AS tr, $wpdb->posts 
+         AS p,
+         $wpdb->terms 
+         AS t, $wpdb->term_taxonomy 
+         AS tt
          WHERE tt.term_id = t.term_id 
          AND object_id=ID 
          $olderThanQuery
@@ -504,13 +510,33 @@ function get_collapscat_fromdb($args='') {
          AND tr.term_taxonomy_id = tt.term_taxonomy_id 
          AND tt.taxonomy IN ($taxonomyQuery) $post_type_query $postSortColumn $postSortOrder";
     $posts= $wpdb->get_results($postquery); 
+    
+// add wpml support dgamoni
+    //var_dump($posts);
+    $wpml_posts = array();
+    //var_dump(ICL_LANGUAGE_CODE);
+    foreach ($posts as $key => $postss) {
+        //var_dump($postss->post_title);
+        //var_dump(wpml_get_language_information($postss->ID));
+        $my_duplications = apply_filters( 'wpml_post_language_details', NULL, $postss->ID );
+        //var_dump($my_duplications["language_code"]);
+        if (ICL_LANGUAGE_CODE == $my_duplications["language_code"]) {
+          $wpml_posts[] = $postss;
+        }
+    }
+    //var_dump($wpml_posts);
+    $posts = $wpml_posts;
+//end
+
     foreach ($posts as $post) {
       if (!$postsInCat[$post->term_id]) {
         $postsInCat[$post->term_id]=array();
       }
       array_push($postsInCat[$post->term_id], $post);
+
     }
   }
+
   add_filter('description', 'collapscat_replace_newlines');
   add_filter('get_terms', 'collapscat_catfilter');
   add_filter('get_terms_orderby', 'collapscat_orderbyfilter');

@@ -42,7 +42,7 @@ $clap_product_documentos_protect = get_field( "clap_product_documentos_protect",
 			<span class="hr-inner "><span class="hr-inner-style"></span></span>
 		</div>
 		<div class="avia_textblock  av_inherit_color clap-product-title-small">
-			<p><?php echo _e( 'ESPECIFICAÇÕES:', 'galucho' ); ?></p>
+			<p><?php echo _e( 'ESPECIFICAÇÕES:','galucho' ); ?></p>
 		</div>
 		<div class="avia_textblock">
 			<?php echo do_shortcode('[clap_product_specifications]'); ?>
@@ -54,7 +54,12 @@ $clap_product_documentos_protect = get_field( "clap_product_documentos_protect",
 			<span class="hr-inner "><span class="hr-inner-style"></span></span>
 		</div>
 		<div class="avia_textblock  av_inherit_color clap-product-title-small">
-			<p class="clap_product_techdetails_title"><?php echo _e( 'CARACTERÍSTICAS TÉCNICAS:', 'galucho' ); ?></p>
+			<p class="clap_product_techdetails_title clap_hide"><?php echo _e( 'CARACTERÍSTICAS TÉCNICAS:', 'galucho' ); ?></p>
+			<!-- <p class=""><?php //echo _e( 'CARACTERÍSTICAS TÉCNICAS E EQUIPAMENTO OPCIONAL:', 'galucho' ); ?></p> -->
+			<p class="">
+				<?php echo _e( 'CARACTERÍSTICAS TÉCNICAS', 'galucho' ); ?><br>
+				<?php echo _e( 'E/OU EQUIPAMENTO OPCIONAL:', 'galucho' ); ?>
+			</p>
 		</div>
 		<div class="avia_textblock">
 			<?php echo do_shortcode("[av_font_icon icon='ue803' font='entypo-fontello' style='' caption='' link='' linktarget='' size='20px' position='left' color='' custom_class='']"); ?>
@@ -63,13 +68,13 @@ $clap_product_documentos_protect = get_field( "clap_product_documentos_protect",
 	<?php endif; ?>
 
 	<?php if ( $clap_product_optional ) : ?>
-		<div class="hr hr-invisible product-space">
+		<div class="hr hr-invisible product-space clap_hide">
 			<span class="hr-inner "><span class="hr-inner-style"></span></span>
 		</div>
-		<div class="avia_textblock  av_inherit_color clap-product-title-small">
+		<div class="avia_textblock  av_inherit_color clap-product-title-small clap_hide">
 			<p class="clap_product_optional_title"><?php echo _e( 'EQUIPAMENTO OPCIONAL:', 'galucho' ); ?></p>
 		</div>
-		<div class="avia_textblock clap_product_optional_content">
+		<div class="avia_textblock clap_product_optional_content clap_hide">
 			<p class=""><?php echo do_shortcode('[clap_product_optional]'); ?></p>
 		</div>
 	<?php endif; ?>

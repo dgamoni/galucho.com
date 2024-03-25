@@ -82,7 +82,7 @@ function clap_product_techdetails_shortcode() {
 	$clap_product_techdetails = get_field( "clap_product_techdetails", $post->ID );
 	 if ( $clap_product_techdetails) : 
 	 		//$output = '<a href="'.$clap_product_techdetails.'">Visualizar</a>';
-	 		$output = '<span data-img="'.$clap_product_techdetails.'" class="clap_popap">Visualizar</span>';
+	 		$output = '<span data-img="'.$clap_product_techdetails.'" class="clap_popap">'.__( 'Visualizar','galucho' ).'</span>';
 	 endif;
 	 return $output;
 }

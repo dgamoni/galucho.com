@@ -5,6 +5,8 @@
 * Wordpress will use those functions instead of the original functions then.
 */
 
+
+
 require_once 'core/load.php';
 
 add_action( 'widgets_init', 'goclap_left_sidebar' );
@@ -80,11 +82,11 @@ function goclap_left_sidebar() {
 
 
 /* Activar debug mode */
-add_action('avia_builder_mode', "builder_set_debug");
-function builder_set_debug()
-{
-	return "debug";
-}
+// add_action('avia_builder_mode', "builder_set_debug");
+// function builder_set_debug()
+// {
+// 	return "debug";
+// }
 
 /* Activar custom CSS nos elementos */
 add_theme_support('avia_template_builder_custom_css');
@@ -105,6 +107,7 @@ return $fonts;
 }
 
 /* Colocar WPML no top bar com country code */
+
 if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
 {
     add_action( 'avia_meta_header', 'avia_wpml_language_switch', 10);
@@ -132,7 +135,7 @@ if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
  
                 $output .= "<li class='language_".$lang['language_code']." $currentlang'>";
                 $output .= "<a href='".$lang['url']."'>";
-                $output .= strtoupper($lang['language_code']);
+                $output .= strtoupper($lang['translated_name']);
                 $output .= "</a></li>";
             }
             $output .= "</ul>";
@@ -140,6 +143,8 @@ if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
         echo $output;
     }
 }
+
+
 
 /* Conditional Tag to check if its a term or any of its children
 *
@@ -160,3 +165,16 @@ function is_or_descendant_tax( $terms,$taxonomy){
     return false;
 }
 
+/* Sidebar menu appear first than contents on mobile */
+function add_custom_script(){
+?>
+<script>
+jQuery(window).load(function(){
+  if (jQuery(window).width() <= 480){	
+	   jQuery("aside").prependTo("main");
+  }
+});
+</script>
+<?php
+}
+add_action('wp_footer', 'add_custom_script');
