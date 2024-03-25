@@ -249,7 +249,14 @@ function get_sub_cat($cat, $categories, $parents, $posts,
               $show='expand';
               $symbol=$expandSym;
             }
-            $subCatLinks.=( "<li class='collapsing categories expandable" . 
+
+// dgamoni subcat li
+// dgamoni subcat add image
+            $calp_taxonomy_categoria_image = get_field('calp_taxonomy_categoria_image', 'categoria_'.$cat2->term_id);
+            //var_dump($calp_taxonomy_categoria_image);
+            $subCatLinks.="<style scoped> li.term_".$cat2->term_id.":before { background: url(".$calp_taxonomy_categoria_image["sizes"]["medium"]."); background-size: 60px auto; }</style>";
+
+            $subCatLinks.=( "<li class='collapsing categories maincat term_".$cat2->term_id." expandable" . 
                 $self . $parent . "'>".
                 "<span class='collapsing categories $show'>".
                 "<span class='sym'>$symbol</span>" );
@@ -276,6 +283,9 @@ function get_sub_cat($cat, $categories, $parents, $posts,
             $link2 .= apply_filters('single_cat_title', $cat2->name).
                 '</a>';
           } else {
+
+          
+
             $link2 .= apply_filters('single_cat_title', $cat2->name).  '</a>';
             if ($showPosts) {
               $link2 .= "</a></span>";
@@ -301,6 +311,7 @@ function get_sub_cat($cat, $categories, $parents, $posts,
               $self . $parent . "'>".
               "<span class='collapsing categories $show'>".
               "<span class='sym'>$symbol</span>" );
+          
           $link2=getCollapsCatLink($cat2,$catlink);
           if ( empty($cat2->description) ) {
             $link2 .= 'title="'. 
@@ -623,6 +634,8 @@ function list_categories($posts, $categories, $parents, $options) {
           ($useCookies && $_COOKIE[$theID]==1)) {
         $expanded='block';
       }
+
+// parent
       if ($showPosts || $subCatPostCount>0 || $showEmptyCat) {
         if ($expanded=='block') {
           $show='collapse';
@@ -631,7 +644,8 @@ function list_categories($posts, $categories, $parents, $options) {
           $show='expand';
           $symbol=$expandSym;
         }
-        // dgamoni
+
+// dgamoni add image
         $calp_taxonomy_categoria_image = get_field('calp_taxonomy_categoria_image', 'categoria_'.$cat->term_id);
         //var_dump($calp_taxonomy_categoria_image);
         // if ($calp_taxonomy_categoria_image) {
@@ -639,34 +653,48 @@ function list_categories($posts, $categories, $parents, $options) {
         // } else {
         //   $calp_taxonomy_image = '';
         // }
-        $span = "<style scoped> li.term_".$cat->term_id.":before { background: url(".$calp_taxonomy_categoria_image["sizes"]["thumbnail"]."); background-size: 60px auto; }</style>";
 
-        $span .= "      <li class='collapsing categories expandable maincat term_".$cat->term_id."" .  $self .
-            $parent . "'>". 
-            "<span class='collapsing categories $show'>".
-            "<span class='sym'>$symbol</span>";
+
+
+// remove parent li
+//output image
+        //$span = "<style scoped> li.term_".$cat->term_id.":before { background: url(".$calp_taxonomy_categoria_image["sizes"]["thumbnail"]."); background-size: 60px auto; }</style>";
+
+        //$span .= "      <li class='collapsing categories expandable maincat term_".$cat->term_id."" .  $self .
+        //    $parent . "'>". 
+        //    "<span class='collapsing categories $show'>".
+        //    "<span class='sym'>$symbol</span>";
       } else {
         $span = "      <li class='collapsing categories item" .  $self. "'>";
       }
-      $link=getCollapsCatLink($cat,$catlink);
-      if ( empty($cat->description) ) {
-        $link .= 'title="'. 
-            sprintf(__("View all posts filed under %s",
-            'collapsing-categories'),
-            wp_specialchars(apply_filters('single_cat_title',$cat->name))) . '"';
-      } else {
-        $link .= 'title="' . wp_specialchars(apply_filters(
-            'description',$cat->description,$cat)) . '"';
-      }
-      $link .= '>';
+
+// remove parent cat title dgamoni
+
+      //$link=getCollapsCatLink($cat,$catlink);
+      
+      // if ( empty($cat->description) ) {
+      //   $link .= 'title="'. 
+      //       sprintf(__("View all posts filed under %s",
+      //       'collapsing-categories'),
+      //       wp_specialchars(apply_filters('single_cat_title',$cat->name))) . '"';
+      // } else {
+      //   $link .= 'title="' . wp_specialchars(apply_filters('single_cat_title',$cat->name)) . '"';
+      // }
+      // $link .= '>';
+      
       if ($linkToCat=='yes') {
         $link .= apply_filters('single_cat_title', $cat->name).'</a>';
         if ($showPosts || $subCatPostCount>0) {
           $span.='</span>';
         }
+
       } else {
+
+// remove parent cat title dgamoni
         if ($showPosts || $subCatPostCount>0) {
-          $link .= apply_filters('single_cat_title',$cat->name) . '</a></span>';
+          //$link .= apply_filters('single_cat_title',$cat->name) . '</a></span>';
+          //$link .= apply_filters('single_cat_title',$cat->name) . '</a></span>';
+        
         } else {
           // don't include the triangles if posts are not shown and there
           // are no more subcategories

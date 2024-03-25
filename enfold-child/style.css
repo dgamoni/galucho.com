@@ -139,6 +139,7 @@ Template: enfold
 	color: #005aab !important;
 	text-transform: uppercase;
 	/*line-height: 52px;*/
+	font-weight: bold;
 }
 .clap_product_title_description {
     display: block;
@@ -160,21 +161,29 @@ Template: enfold
     padding-top: 0;
     padding-bottom: 0;
     display: block;
-    line-height: 52px;
+    /*line-height: 52px;*/
+    line-height: 35px;
+    margin-bottom: 0;
 }
 .entry-content-wrapper li.item, .subcat .item{
 	padding: 0;
 	margin: 0;
 	line-height: 24px;
 }
-li.maincat:before {
+li.maincat:before,
+li.mycat:before {
 	content: '';
 	width: 60px;
     height: 32px;
     left: 0px;
-    top: 11px;
+    /*top: 11px;*/
+    top: 0px;
     position: absolute;
     /*background-size: 60px auto;*/
+}
+/*only for subcat style*/
+.maincat ul {
+	margin-left: 0;
 }
 .subcat {
 	/*margin-top: -11px;*/
@@ -215,4 +224,23 @@ li.maincat:before {
 }
 .sidebar_space {
 	padding-top: 71px;
+}
+
+/*popap*/
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  max-width: 650px;
+  margin: 20px auto;
+}
+.clap_popap {
+	color: #000000;
+}
+.clap_popap:hover {
+	color: #a0cdd2;
+	outline: 0;
+    text-decoration: underline;
+    cursor: pointer;
 }

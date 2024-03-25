@@ -1,5 +1,5 @@
 <?php
-define( 'TEXTDOMAIN', 'goclap-child' );
+define('TEXTDOMAIN', 'galucho');
 define('CORE_PATH', get_stylesheet_directory() . '/core');
 define('CORE_URL', get_stylesheet_directory_uri() . '/core');
 
@@ -32,6 +32,16 @@ foreach ($dirs as $dir) {
 
 // lib
 include_once( CORE_PATH . '/lib/collapsing-categories/collapscat.php' );
+
+// textdomain
+add_action('after_setup_theme', 'galucho_textdomain');
+function galucho_textdomain(){
+    load_theme_textdomain('galucho', get_stylesheet_directory() . '/lang');
+}
+
+// load js
+wp_enqueue_script( 'goclap_child_js', CORE_URL .'/js/custom.js', array('jquery'), 2, false );
+
 
 // ACF load BUG!
 // 1. customize ACF path
@@ -77,3 +87,5 @@ include_once( CORE_PATH . '/lib/collapsing-categories/collapscat.php' );
 //         //wp_register_style( 'goclap_child_unitegallery_theme_css',   CORE_URL ."/lib/unitegallery-plugin/themes/default/ug-theme-default.css", array(), '2', 'all' );
 //     }
 // }
+
+

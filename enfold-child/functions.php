@@ -140,3 +140,23 @@ if(defined('ICL_SITEPRESS_VERSION') && defined('ICL_LANGUAGE_CODE'))
         echo $output;
     }
 }
+
+/* Conditional Tag to check if its a term or any of its children
+*
+* @param $terms - (string/array) list of term ids
+*
+* @param $taxonomy - (string) the taxonomy name of which the holds the terms. 
+*/
+function is_or_descendant_tax( $terms,$taxonomy){
+    if (is_tax($taxonomy, $terms)){
+            return true;
+    }
+    foreach ( (array) $terms as $term ) {
+        // get_term_children() accepts integer ID only
+        $descendants = get_term_children( (int) $term, $taxonomy);
+        if ( $descendants && is_tax($taxonomy, $descendants) )
+            return true;
+    }
+    return false;
+}
+

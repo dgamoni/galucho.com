@@ -32,7 +32,7 @@ function clap_product_foto_shortcode() {
 		if( $clap_product_foto || $clap_product_youtube) {
 			$output .= '<div id="clap_product_gallery" style="display:none;">';
 				putUniteGallery("clap_product");
-				wp_enqueue_script( 'goclap_child_js', CORE_URL .'/js/custom.js', array('jquery'), 2, false );	
+				// wp_enqueue_script( 'goclap_child_js', CORE_URL .'/js/custom.js', array('jquery'), 2, false );	
 		}
 
 			if( $images ):
@@ -81,7 +81,8 @@ function clap_product_techdetails_shortcode() {
 	global $post;
 	$clap_product_techdetails = get_field( "clap_product_techdetails", $post->ID );
 	 if ( $clap_product_techdetails) : 
-	 		$output = '<a href="'.$clap_product_techdetails.'">Visualizar</a>';
+	 		//$output = '<a href="'.$clap_product_techdetails.'">Visualizar</a>';
+	 		$output = '<span data-img="'.$clap_product_techdetails.'" class="clap_popap">Visualizar</span>';
 	 endif;
 	 return $output;
 }
@@ -109,7 +110,7 @@ function clap_product_documentos_shortcode() {
 		        if ($clap_product_documentos_ficheiro && $clap_product_documentos_titulo) :
 			        $output .= '<p>';
 			        $output .= do_shortcode("[av_font_icon icon='ue82d' font='entypo-fontello' style='' caption='' link='' linktarget='' size='20px' position='left' color='' custom_class=''][/av_font_icon]");
-			        $output .= '<a href="'. $clap_product_documentos_ficheiro['url'] .'">'.$clap_product_documentos_titulo.'</a>';
+			        $output .= '<a href="'. $clap_product_documentos_ficheiro['url'] .'" target="_blank">'.$clap_product_documentos_titulo.'</a>';
 		        	$output .= '</p>';
 		        endif;
 	        endif;
@@ -119,3 +120,27 @@ function clap_product_documentos_shortcode() {
 	return $output;
 }
 add_shortcode( 'clap_product_documentos', 'clap_product_documentos_shortcode' );
+
+// update
+function clap_product_documentos_protect_shortcode() {
+	global $post;
+
+	$output = '';
+	if( have_rows('clap_product_documentos_protect') ):
+	    while ( have_rows('clap_product_documentos_protect') ) : the_row();
+	        if( get_row_layout() == 'clap_product_documentos_layout' ):
+	        	$clap_product_documentos_titulo = get_sub_field('clap_product_documentos_titulo');
+		        $clap_product_documentos_ficheiro = get_sub_field('clap_product_documentos_ficheiro');
+		        if ($clap_product_documentos_ficheiro) :
+			        $output .= '<p>';
+			        $output .= do_shortcode("[av_font_icon icon='ue82d' font='entypo-fontello' style='' caption='' link='' linktarget='' size='20px' position='left' color='' custom_class=''][/av_font_icon]");
+			        $output .= '<a href="'. $clap_product_documentos_ficheiro['url'] .'" target="_blank">'.$clap_product_documentos_titulo.'</a>';
+		        	$output .= '</p>';
+		        endif;
+	        endif;
+	    endwhile;
+	endif;
+
+	return $output;
+}
+add_shortcode( 'clap_product_documentos_protect', 'clap_product_documentos_protect_shortcode' );

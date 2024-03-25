@@ -32,7 +32,6 @@
 				//get the sidebar
 				$avia_config['currently_viewing'] = 'blog';
 				get_sidebar('left-default');
-
 				?>
 
 			</div><!--end container-->
