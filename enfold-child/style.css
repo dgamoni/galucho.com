@@ -1,0 +1,218 @@
+/*
+Theme Name: Enfold Child
+Description: A <a href='http://codex.wordpress.org/Child_Themes'>Child Theme</a> for the Enfold Wordpress Theme. If you plan to do a lot of file modifications we recommend to use this Theme instead of the original Theme. Updating wil be much easier then.
+Version: 1.0
+Author: Kriesi
+Author URI: http://www.kriesi.at
+Template: enfold
+*/
+
+
+/* Alterar letras no menu principal */
+.avia-menu-text {
+	font-size: 15px;
+	font-weight: normal!important;
+}
+.sub_menu>ul>li>a {
+	font-weight: normal!important;
+}
+
+
+/* Altera cor de formulário de pesquisa */
+#top .header_color input[type='text'] {
+	background-color: #f8f8f8;
+	color: #00509f;
+}
+
+
+ /* Tira sublinhado - usar no custom CSS */
+.tira_underline a {
+	text-decoration: none!important;
+}
+
+
+ /* Tira sublinhado nas caixas debaixo do slider */
+#top .av_inherit_color a{ text-decoration: none; }
+
+
+/* No footer tira estado do a visited etc. */
+#footer .textwidget a {
+	color: #000000;
+	text-decoration: none;
+}
+
+/* Tira mouse over nos links de img */
+.image-overlay-inside {
+	display: none !important;
+}
+
+
+/* CSS para a form de contacto */
+.galucho_campo {
+	background: rgba(0, 0, 0, .0) !important;
+	border:2px solid #00509f !important; 
+	border-radius:3px !important;
+	padding: 13px !important; 
+	width: 100% !important;
+	min-width: 50px;
+	font-weight: 400 !important;
+	color:#00509f !important;
+	}
+.galucho_botao {
+	background: rgba(0, 80, 159, .0) !important;
+	border:2px solid #00509f!important; 
+	border-radius:3px!important;
+	padding:16px 20px!important; 
+	min-width:142px!important;
+	font-size:12px!important;
+	color:#00509f!important;
+	}
+.galucho_botao:hover {
+	background:#b0daff!important;
+}
+#top .input-text, #top input[type="text"], #top input[type="input"], #top input[type="password"], #top input[type="email"], #top input[type="number"], #top input[type="url"], #top input[type="tel"], #top input[type="search"], #top textarea, #top select {
+    -webkit-appearance: none;
+/*    border: 1px solid #e1e1e1;
+    padding: 8px 6px; */
+    outline: none;
+    font: 1em "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*    color: #777; */
+    margin: 0;
+/*    width: 100%; */
+    display: block;
+	margin-bottom: 0px;
+/*    background: #fff;
+    border-radius: 0px; */
+}
+
+
+/* Reduz fonte no widget do footer */
+#footer .textwidget	{
+	margin-top: -0.25em;
+	font-size:13px;
+	line-height: 150%;
+}
+
+
+/* Reduz fonte do título do widget do footer */
+#footer .widgettitle {
+		font-size:13px;
+		letter-spacing: 0px!important;
+}
+
+
+/* Normaliza entrelinha */
+.galucho_entrelinha {
+	line-height: 100%!important;
+}
+
+
+/* Normaliza entrelinha */
+.galucho_entrelinha_slider {
+	line-height: 120%!important;
+}
+
+
+/* Retira sublinhado */
+.galucho_sublinhado a {
+	color: #919191!important;
+	text-decoration: none;
+}
+
+/*left sidebar*/
+.collapsing.categories {
+	list-style: none;
+}
+.collapsing.categories .item a {
+	color: #919191;
+}
+.collapsing.categories .item a:hover {
+	text-decoration: none;
+	/*color:black;*/
+}
+.collapsing.categories.expandable.parent .self a,
+.self .clap_product_title_description {
+	/*font-weight: bold;*/
+	color: black;
+}
+.maincat span >a {
+	color: #005aab !important;
+	text-transform: uppercase;
+	/*line-height: 52px;*/
+}
+.clap_product_title_description {
+    display: block;
+    font-size: 14px;
+    line-height: 12px;
+    margin-top: -3px;
+    color: #919191;
+}
+.calp_taxonomy_image {
+	width: 60px;
+    position: absolute;
+    top: 6px;
+    left: 0;
+}
+.entry-content-wrapper li.maincat, .maincat  {
+	margin-left: 0;
+    padding-left: 70px;
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: block;
+    line-height: 52px;
+}
+.entry-content-wrapper li.item, .subcat .item{
+	padding: 0;
+	margin: 0;
+	line-height: 24px;
+}
+li.maincat:before {
+	content: '';
+	width: 60px;
+    height: 32px;
+    left: 0px;
+    top: 11px;
+    position: absolute;
+    /*background-size: 60px auto;*/
+}
+.subcat {
+	/*margin-top: -11px;*/
+}
+.sidebar_left.sidebar.sidebar_archive {
+	text-align: left !important;
+    /*padding-left: 50px;*/
+    /*padding-top: 22px;*/
+}
+#top .sidebar_archive label {
+/*    color: #005aab;
+    text-transform: uppercase;*/
+}
+#top .sidebar_archive label:hover {
+	/*cursor: pointer;*/
+}
+.sidebar_archive, 
+.tax-categoria .sidebar_left .content,
+.post-type-archive-clap-product .sidebar_left .content{
+    border: none !important;
+}
+.tax-categoria .sidebar_left .inner_sidebar,
+.post-type-archive-clap-product .sidebar_left .inner_sidebar {
+    margin-right: 0;
+    margin-left: 0;
+}
+/*dgamoni update*/
+.clap-product-title {
+	font-size:28px;
+	color:#005aab;
+}
+.clap-product-title-small {
+    font-size: 18px;
+    color: #005aab;
+}
+.product-space {
+	height:20px;
+}
+.sidebar_space {
+	padding-top: 71px;
+}

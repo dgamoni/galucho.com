@@ -14,13 +14,12 @@ $clap_product_specifications = get_field( "clap_product_specifications", $post->
 $clap_product_techdetails = get_field( "clap_product_techdetails", $post->ID );
 $clap_product_optional = get_field( "clap_product_optional", $post->ID );
 $clap_product_documentos = get_field( "clap_product_documentos", $post->ID );
-$clap_product_documentos_protect = get_field( "clap_product_documentos_protect", $post->ID );
 
 ?>
 	
 	<?php if ( $clap_product_title) : ?>
 		<div class="avia_textblock av_inherit_color clap-product-title">
-			<?php echo do_shortcode('[clap_product_title]'); ?>
+			<strong><?php echo do_shortcode('[clap_product_title]'); ?></strong>
 		</div>
 	<?php endif; ?>
 
@@ -42,7 +41,7 @@ $clap_product_documentos_protect = get_field( "clap_product_documentos_protect",
 			<span class="hr-inner "><span class="hr-inner-style"></span></span>
 		</div>
 		<div class="avia_textblock  av_inherit_color clap-product-title-small">
-			<p><?php echo _e( 'ESPECIFICAÇÕES:', 'galucho' ); ?></p>
+			<p>ESPECIFICAÇÕES:</p>
 		</div>
 		<div class="avia_textblock">
 			<?php echo do_shortcode('[clap_product_specifications]'); ?>
@@ -54,7 +53,7 @@ $clap_product_documentos_protect = get_field( "clap_product_documentos_protect",
 			<span class="hr-inner "><span class="hr-inner-style"></span></span>
 		</div>
 		<div class="avia_textblock  av_inherit_color clap-product-title-small">
-			<p class="clap_product_techdetails_title"><?php echo _e( 'CARACTERÍSTICAS TÉCNICAS:', 'galucho' ); ?></p>
+			<p>CARACTERÍSTICAS TÉCNICAS:</p>
 		</div>
 		<div class="avia_textblock">
 			<?php echo do_shortcode("[av_font_icon icon='ue803' font='entypo-fontello' style='' caption='' link='' linktarget='' size='20px' position='left' color='' custom_class='']"); ?>
@@ -67,57 +66,24 @@ $clap_product_documentos_protect = get_field( "clap_product_documentos_protect",
 			<span class="hr-inner "><span class="hr-inner-style"></span></span>
 		</div>
 		<div class="avia_textblock  av_inherit_color clap-product-title-small">
-			<p class="clap_product_optional_title"><?php echo _e( 'EQUIPAMENTO OPCIONAL:', 'galucho' ); ?></p>
+			<p>EQUIPAMENTO OPCIONAL:</p>
 		</div>
-		<div class="avia_textblock clap_product_optional_content">
-			<p class=""><?php echo do_shortcode('[clap_product_optional]'); ?></p>
+		<div class="avia_textblock">
+			<p><?php echo do_shortcode('[clap_product_optional]'); ?></p>
 		</div>
 	<?php endif; ?>
 
-	<?php if ( $clap_product_documentos || $clap_product_documentos_protect ) : ?>
+	<?php if ( $clap_product_documentos ) : ?>
 		<div class="hr hr-invisible product-space">
 			<span class="hr-inner "><span class="hr-inner-style"></span></span>
 		</div>
 		<div class="avia_textblock  av_inherit_color clap-product-title-small">
-			<p><?php echo _e( 'DOCUMENTOS:', 'galucho' ); ?></p>
+			<p>DOCUMENTOS:</p>
 		</div>
 		<div class="avia_textblock">
-			<p>	
-				<?php if ( $clap_product_documentos) : ?>
-							<?php echo do_shortcode('[clap_product_documentos]'); ?>
-				<?php endif; ?>
-				<?php if ( $clap_product_documentos_protect ) :
-							  $shortcodes = '[pc-pvt-content allow="7" warning="0"]';
-							  $shortcodes .= '[clap_product_documentos_protect]';
-							  $shortcodes .= '[/pc-pvt-content]';
-							  echo do_shortcode($shortcodes);
-							  //var_dump($shortcodes);
-					endif;
-				?>
-			</p>
+			<p><?php echo do_shortcode('[clap_product_documentos]'); ?></p>
 		</div>
 	<?php endif; ?>
-
-	<?php
-	// $shortcodes = '[pc-pvt-content allow="7" warning="0"]';
-
-	//  if ( $clap_product_documentos_protect ) : 
-	// 	$shortcodes .= '<div class="hr hr-invisible product-space">';
-	// 		$shortcodes .= '<span class="hr-inner "><span class="hr-inner-style"></span></span>';
-	// 	$shortcodes .= '</div>';
-	// 	$shortcodes .= '<div class="avia_textblock  av_inherit_color clap-product-title-small">';
-	// 		$shortcodes .= '<p>Documentos protegidos:</p>';
-	// 	$shortcodes .= '</div>';
-	// 	$shortcodes .= '<div class="avia_textblock">';
-	// 		$shortcodes .= '<p>[clap_product_documentos_protect]</p>';
-	// 	$shortcodes .='</div>';
-	//  endif; 
-
-	// $shortcodes .= '[/pc-pvt-content]';
-	// echo do_shortcode($shortcodes);
-	?>
-
-
 
 
 
