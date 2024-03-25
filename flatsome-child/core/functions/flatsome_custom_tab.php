@@ -254,16 +254,16 @@ function flatsome_custom_product_tabs_plus( $tabs ) {
   if($wc_cpdf->get_value(get_the_ID(), '_custom_tab_title_2')){
     $tabs['ux_custom_tab_2'] = array(
       'title'   =>  $wc_cpdf->get_value(get_the_ID(), '_custom_tab_title_2'),
-      'priority'  => 40,
+      'priority'  => 42,
       'callback'  => 'flatsome_custom_tab_content_2'
     );
   }
 
   // Adds the new tab
   if($wc_cpdf->get_value(get_the_ID(), '_custom_tab_title_3')){
-    $tabs['ux_custom_tab_2'] = array(
+    $tabs['ux_custom_tab_3'] = array(
       'title'   =>  $wc_cpdf->get_value(get_the_ID(), '_custom_tab_title_3'),
-      'priority'  => 40,
+      'priority'  => 43,
       'callback'  => 'flatsome_custom_tab_content_3'
     );
   }
@@ -272,7 +272,7 @@ function flatsome_custom_product_tabs_plus( $tabs ) {
   if($wc_cpdf->get_value(get_the_ID(), '_custom_tab_title_4')){
     $tabs['ux_custom_tab_4'] = array(
       'title'   =>  $wc_cpdf->get_value(get_the_ID(), '_custom_tab_title_4'),
-      'priority'  => 40,
+      'priority'  => 44,
       'callback'  => 'flatsome_custom_tab_content_4'
     );
   }  

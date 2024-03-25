@@ -4,7 +4,7 @@ define('CORE_URL', get_stylesheet_directory_uri()  . '/core');
 
 $dirs = array(
 	//CORE_PATH . '/post_types/',
-    //CORE_PATH . '/shortcode/',
+    CORE_PATH . '/shortcode/',
     CORE_PATH . '/functions/'
 
 );
